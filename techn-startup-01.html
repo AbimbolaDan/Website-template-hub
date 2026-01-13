@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Abimbola Daniel">
+    <meta name="description" content="Sass Landing page for BUSNEX.AI">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <title>BUSNEX.AI</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-base: #020408;          
+            --bg-surface: #0a0c12;      
+            --primary: #3b82f6;          
+            --primary-glow: rgba(59, 130, 246, 0.15);
+            --border-dim: rgba(255, 255, 255, 0.05);
+            --text-head: #ffffff;       
+            --text-body: #94a3b8;
+            --glass-card: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --section-padding: 120px;
+            --danger:#f43f5e;
+            --warning:#fbbf24;
+            --success:#4ade80;
+            --cyan:#22d3ee;
+            --secondary:#a855f7;
+            --text-dim:#64748b;
+            --container-width: 1100px;
+            --text-main: rgba(255, 255, 255, 0.2);
+            --text-body: #94a3b8;
+        }
+
+        body{
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            line-height: 1.6;
+            background-color: var(--bg-base);
+            background-image: 
+            linear-gradient(var(--border-dim) 1px, transparent 1px),
+            linear-gradient(90deg, var(--border-dim) 1px, transparent 1px),
+            radial-gradient(circle at 50% 50%, var(--primary-glow) 0%, transparent 60%);
+            background-size: 40px 40px, 40px 40px, 100% 100%;
+            background-attachment: fixed;
+            color: var(--text-body);
+        }
+
+        h1, h2, h3, .brand {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -0.04em; 
+        }
+
+        .header-container{
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            padding: 15px;
+            position: sticky;
+            top: 0;
+            left:0;
+            z-index: 9000;
+        }
+
+        .brand{
+            text-decoration: none;
+            color:var(--text-head);
+            font-size: 1.5rem;
+            font-weight: 600;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+        .navigation_bar .link-list{
+            display: flex;
+            align-items: center;
+            list-style-type: none;
+            gap: 40px;
+
+        }
+
+        .link-list a{
+            text-decoration: none;
+            color: var(--text-body);
+        }
+
+        .link-list a:hover{
+            color: var(--text-head);
+        }
+
+        .nav-toggle{
+            display: none;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 50px;
+            height: 43px;
+            align-items: center;
+            justify-content: center;
+        }
+        .nav-toggle .hamburger{
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--primary);
+            position: relative;
+        }
+        .nav-toggle .hamburger::before,
+        .nav-toggle .hamburger::after{
+            content: '';
+            position: absolute;
+            left: 0;
+            width: 24px;
+            height: 2px;
+            background: var(--primary-color);
+            transition: transform 220ms ease, opacity 220ms ease;
+        }
+        .nav-toggle .hamburger::before{ top: -7px; }
+        .nav-toggle .hamburger::after{ top: 7px; }
+
+        #nav_section.open .nav-toggle .hamburger{ background: transparent; }
+        #nav_section.open .nav-toggle .hamburger::before{ transform: rotate(45deg)      translate(4px, 4px); }
+        #nav_section.open .nav-toggle .hamburger::after{ transform: rotate(-45deg)      translate(4px, -4px); }
+        .started{
+            background-color: transparent;
+            text-decoration: none;
+            border: 1px solid white;
+            padding: 10px 40px ;
+            border-radius: 28px;
+            color: var(--text-head);
+        }
+
+        .hero-section{
+            padding: 160px 0 100px 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-container{
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-badge{
+            background-color: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            color: var(--primary);
+            padding: 6px 16px;
+            display: inline-block;
+            border-radius: 100px;
+            margin-bottom: 24px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-align: center;
+            margin-left: 30px;
+
+        }
+
+        .hero-title{
+            color: var(--text-head);
+            font-size: 4rem;
+            margin-bottom: 18px;
+            line-height: 1.1;
+            text-align: center;
+        }
+
+        .gradient-text{
+            color:var(--primary)
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto 40px auto;
+            line-height: 1.6;
+        }
+        .button-container{
+            display: flex;
+            gap: 25px;
+            justify-content: center;
+        }
+
+        .request{
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+        }
+
+        .view {
+            background: var(--glass-card); 
+            color: var(--text-head);
+            font-weight: 600;
+            padding: 14px 22px;
+            border-radius: 8px;
+            border: 1px solid var(--primary);
+            backdrop-filter: blur(10px); 
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .request:hover { transform: translateY(-2px); }
+
+        .view:hover { background: rgba(255,255,255,0.1); }
+
+        .Global, .Ai, .edge{
+            color: var(--primary);
+        }
+
+        .insights-section {
+            padding: var(--section-padding)  0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+            text-align: center;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            color: var(--text-head);
+            margin-top: 15px;
+            text-align: center;
+        }
+
+        .insights-wrapper {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .insight-card {
+            flex: 1;
+            min-width: 320px; 
+            max-width: 380px;
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            overflow: hidden;
+            backdrop-filter: blur(16px); 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-image-box {
+            width: 100%;
+            height: 200px;
+            overflow: hidden;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .card-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) brightness(0.6); 
+            transition: all 0.5s ease;
+        }
+
+        .card-content {
+            padding: 35px;
+        }
+
+        .card-icon {
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 15px;
+        }
+
+        .insight-card h3 {
+            color: var(--text-head);
+            font-size: 1.6rem;
+            margin-bottom: 15px;
+        }
+    
+        .insight-card p {
+            color: var(--text-body);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .insight-card:hover {
+            transform: translateY(-12px);
+            border-color: var(--primary);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+    
+        .insight-card:hover img {
+            filter: grayscale(0%) brightness(1); 
+            transform: scale(1.1);
+        }
+    
+        .insight-card.active {
+            border-color: var(--primary);
+            box-shadow: 0 0 30px var(--primary-glow);
+        }
+
+        .badge {
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            background: var(--primary-glow);
+            border-radius: 100px;
+            display: inline-block;
+        }
+
+        .value-prop-section {
+            padding: 80px 0;
+            background: transparent;
+            margin: 0 auto;
+            max-width: var(--container-width);
+        }
+
+        .badge2{
+            color: var(--primary);
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 8px 16px;
+            background: var(--primary-glow);
+            border-radius: 100px;
+            display: inline-block;
+            text-align: center;
+            margin-left: 120px;
+        }
+        .value-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .value-content {
+            flex: 1;
+        }
+
+        .value-content h2 {
+            font-size: 3rem;
+            margin: 20px 0;
+            line-height: 1.2;
+            color: var(--text-head);
+        }
+
+        .value-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 40px;
+        }
+
+        .value-list li {
+            margin-bottom: 25px;
+            padding-left: 30px;
+            position: relative;
+            color: var(--text-body);
+        }
+
+        .value-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        .value-visual {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        } 
+
+        .stat-glass-card {
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            padding: 40px;
+            border-radius: 32px;
+            backdrop-filter: blur(20px);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.4);
+        }
+
+        .stat-header {
+            color: var(--text-body);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .stat-value {
+            font-size: 4.5rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--primary);
+            font-weight: 800;
+            margin: 10px 0;
+        }
+
+        .graph-line {
+            height: 4px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 10px;
+            margin-top: 20px;
+            box-shadow: 0 0 15px var(--primary-glow);
+        }
+
+        .terminal-section {
+            padding: 60px 0;
+            max-width: var(--container-width);
+            margin: 0 auto;
+        }
+
+        .terminal-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 60px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 50px 0 ;
+        }
+
+        .terminal-window {
+            flex: 1.4;
+            background: var(--bg-surface);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 40px 100px rgba(0, 0, 0, 0.6);
+        }
+
+        .terminal-header {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            border-bottom: 1px solid var(--glass-border);
+        }
+
+        .terminal-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .dot { width: 10px; height: 10px; border-radius: 50%; }
+        .red { background: var(--danger); }
+        .yellow { background: var(--warning); }
+        .green { background: var(--success); }
+
+        .terminal-title {
+            margin-left: 20px;
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .terminal-body {
+            padding: 30px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            min-height: 280px;
+        }
+
+        .line { margin-bottom: 8px; line-height: 1.5; }
+        .prompt { color: var(--primary); }
+        .muted { color: var(--text-dim); }
+        .cyan { color: var(--cyan); }
+        .purple { color: var(--secondary); }
+        .success { color: var(--success); }
+
+        .cursor {
+            display: inline-block;
+            width: 8px;
+            height: 15px;
+            background: var(--primary);
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink { 50% { opacity: 0; } }
+
+        .terminal-info { 
+            flex: 1;
+            margin-top: -40px;
+        }
+
+        .terminal-info h2{
+            color: var(--text-head);
+            font-size: 2rem;
+        }
+
+        .network-section {
+            padding: 60px 0 60px 0;
+            text-align: center;
+        }
+
+        .network-label {
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-dim);
+            margin-bottom: 50px;
+            font-weight: 500;
+        }
+
+        .logo-cloud {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding:  20px;
+        }
+
+        .client-logo {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: var(--text-head);
+            background: var(--glass-card);
+            border: 1px solid var(--glass-border);
+            padding: 12px 28px;
+            border-radius: 100px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3), 
+                inset 0 1px 1px rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+        }
+
+        .client-logo:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px var(--primary-glow);
+        }
+
+        .cta-section {
+            padding: 60px 0 40px 0;
+        }
+
+        .cta-box {
+            background: linear-gradient(rgba(2, 6, 23, 0.8), rgba(2, 6, 23, 0.8)),var(--glass-card);
+            border: 1px solid var(--primary); 
+            padding: 70px 40px;
+            border-radius: 32px;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto 100px auto;
+            box-shadow: 0 0 50px var(--primary-glow);
+        }
+
+        .cta-box h2 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-actions {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .main-footer {
+            position: relative;
+            padding-top: 70px;
+            margin-top: 50px;
+            border-top: 1px solid var(--glass-border);
+        }
+
+        .main-footer::before {
+            content: "";
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--primary),         var(--secondary), transparent);
+            box-shadow: 0 0 20px var(--primary-glow);
+            z-index: 5;
+        }
+
+        .footer-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 80px;
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding-bottom: 40px;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .neural-core {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary);
+            border-radius: 4px;
+            position: relative;
+        }
+
+        .neural-core::after {
+            content: "";
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: var(--secondary);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .brand-text {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-head);
+            letter-spacing: -1px;
+        }
+
+        .ai-dot {
+            color: var(--primary);
+        }
+
+        .brand-tagline {
+            max-width: 300px;
+            color: var(--text-body);
+            font-size: 0.95rem;
+        }
+
+        .footer-links-container {
+            display: flex;
+            gap: 100px;
+        }
+
+        .footer-group h4 {
+            color: var(--text-head);
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        .footer-group ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-group li {
+            margin-bottom: 12px;
+        }
+
+        .footer-group a {
+            text-decoration: none;
+            color: var(--text-body);
+            transition: 0.3s ease;
+        }
+
+        .footer-group a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-bottom: 20px;
+            color: var(--text-head);
+            font-size: 0.95rem;
+        }
+
+        .footer-bottom span{
+            color: var(--primary);
+        }
+        @media (max-width: 768px) {
+                body{
+                    overflow-x: hidden;
+                }
+                .hero-section{
+                    display: flex;
+                    flex-wrap: wrap;
+                    padding: 40px;
+                }
+
+                .hero-title{
+                    font-size: 3rem;
+                }
+
+                .hero-subtitle{
+                    padding-left: 20px;
+                    max-width: 600px;
+                }
+
+                .card-image-box{
+                    height: 180px;
+                }
+
+                .insights-section{
+                    padding-bottom: 12px;
+                }
+
+                .insights-wrapper{
+                    gap: 50px;
+                }
+                .value-prop-section{
+                    margin: 0 auto;
+                    padding: 90px;
+                }
+
+                .value-wrapper{
+                    display: flex;
+                    flex-direction: column;
+                }
+                
+                .value-content{
+                    text-align: center;
+                }
+
+                .badge2{
+                    margin-left: 10px;
+                }
+
+                .terminal-wrapper{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    align-items: center;
+                    gap: 50px;
+
+                }
+                
+                .network-section{
+                    padding: 60px 0 40px 0 ;
+                }
+
+                .cta-box{
+                    width: auto;
+                    padding: 60px 20px;
+                    margin: 0 40px 60px 40px;
+                }
+
+                .cta-box h2{
+                    font-size: 1.8rem;
+                    line-height: 1.3;
+                }
+
+                .cta-actions{
+                    flex-direction: column;
+                    gap: 15px;
+                    width: 100%;
+                }
+
+                .cta-actions .request, .cta-actions .view{
+                    width: 100%;
+                    border: 18px;
+                    text-align: center;
+                }
+                
+                .main-footer{
+                    margin-top: 50px;
+                }
+
+                .footer-wrapper{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    gap: 50px;
+                }
+        }
+    </style>
+</head>
+<body>
+    <header id="header">
+    <div class="header-container">
+        <a href="#" class="brand">BUSNEX.AI</a>
+        <nav class="navigation_bar">
+            <ul class="link-list">
+                <li><a href="#solutions" class="link-item">Solutions</a></li>
+                <li><a href="#performance" class="link-item">Performance</a></li>
+                <li><a href="#terminal" class="link-item">Terminal</a></li>
+                <li><a href="#network" class="link-item">Network</a></li>
+            </ul>
+        </nav>
+        <a href="#cta" class="started">Get Started</a>
+        <div class="toggle-switch">
+                <label class="switch-label">
+                <input type="checkbox" class="checkbox">
+                <span class="slider"></span>
+                </label>
+        </div> 
+            <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="hamburger"></span>
+                <span class="sr-only"></span>
+            </button>
+    </div>
+    </header>
+
+    <main>
+        <section class="hero-section" id="hero">
+            <div class="container hero-container">
+                <div class="hero-badge">v1.0.4 <br>Autonomous Intelligence</div>
+                <h1 class="hero-title">
+                    Empowering the Next Generation of <span class="Global">Global </span>
+                    <span class="gradient-text">Enterprises with <span class="Ai">AI</span>.</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Integrate proprietary deep learning models directly into your existing architecture. 
+                    Eliminate operational friction with verified 99.9% accuracy across workflows.
+                </p>
+            <div class="button-container">
+            <button class="request">Request Demo</button>
+            <button class="view">View Documentation</button>
+                </div>
+            </div>
+        </section>
+
+    <section class="insights-section" id="solutions">
+    <div class="container">
+        <div class="section-header">
+            <span class="badge">Core Solutions</span>
+            <h2 class="section-title">Intelligence at the <span class="edge">Edge</span></h2>
+        </div>
+        
+        <div class="insights-wrapper">
+            <div class="insight-card">
+                <div class="card-image-box">
+                    <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=800" alt="Neural Monitoring">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">01</div>
+                    <h3>Neural Monitoring</h3>
+                    <p>Real-time oversight of enterprise workflows with autonomous anomaly detection.</p>
+                </div>
+            </div>
+
+            <div class="insight-card active">
+                <div class="card-image-box">
+                    <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800" alt="Predictive Analysis">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">02</div>
+                    <h3>Predictive Analysis</h3>
+                    <p>Utilize deep learning to forecast bottlenecks before they impact your ROI.</p>
+                </div>
+            </div>
+
+            <div class="insight-card">
+                <div class="card-image-box">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Architectural Sync">
+                </div>
+                <div class="card-content">
+                    <div class="card-icon">03</div>
+                    <h3>Architectural Sync</h3>
+                    <p>Seamlessly integrate AI layers into your existing cloud stack with zero-latency.</p>
+                </div>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <section class="value-prop-section" id="performance">
+    <div class="container value-wrapper">
+        <div class="value-content">
+            <span class="badge2">Performance First</span>
+            <h2>Eliminate Operational Friction with <span class="gradient-text">Verified Precision.</span></h2>
+            <p>Most platforms simply execute tasks. BUSNEX.AI understands the context behind your data—and exactly how to optimize it for growth.</p>
+            
+            <ul class="value-list">
+                <li>
+                    <strong>99.9% Accuracy:</strong> Proprietary deep learning models ensure zero-error workflows.
+                </li>
+                <li>
+                    <strong>Zero Friction:</strong> Integrate into any cloud stack with a single API endpoint.
+                </li>
+                <li>
+                    <strong>Data Sovereignty:</strong> Your data never leaves your infrastructure, guaranteed.
+                </li>
+            </ul>
+        </div>
+
+        <div class="value-visual">
+            <div class="stat-glass-card">
+                <div class="stat-header">Efficiency Increase</div>
+                <div class="stat-value">+24.8%</div>
+                <div class="stat-graph">
+                    <div class="graph-line"></div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </section>
+
+        <section class="terminal-section" id="terminal">
+    <div class="container terminal-wrapper">
+        <div class="terminal-info">
+            <span class="badge">Live Technical Demo</span>
+            <h2>Under the Hood of <span class="gradient-text">Autonomous Intelligence.</span></h2>
+            <p>Experience how our neural engine identifies and fixes infrastructure bottlenecks in milliseconds before they impact your users.</p>
+        </div>
+        <div class="terminal-window">
+            <div class="terminal-header">
+                <div class="terminal-controls">
+                    <span class="dot red"></span>
+                    <span class="dot yellow"></span>
+                    <span class="dot green"></span>
+                </div>
+                <div class="terminal-title">busnex-core — bash</div>
+            </div>
+            
+            <div class="terminal-body">
+                <div class="line"><span class="prompt">guest@busnex:~$</span> run diagnostic --neural-layer</div>
+                <div class="line muted">[INFO] Initializing global monitoring...</div>
+                <div class="line muted">[OK] Synchronizing with Node: LAG-01</div>
+                <div class="line cyan">>> Predictive Analysis: 99.9% Accuracy Verified</div>
+                <div class="line purple">>> Optimization: 24% Latency Reduction Active</div>
+                <div class="line success">System Stable. Monitoring active.</div>
+                <div class="line"><span class="prompt">guest@busnex:~$</span> <span class="cursor"></span></div>
+            </div>
+        </div>
+        </div>
+       </section>
+
+        <section class="network-section" id="network">
+            <div class="container">
+                <p class="network-label">Trusted by industry leaders in deep-tech</p>
+            <div class="logo-cloud">
+            <div class="client-logo">QUANTUM</div>
+            <div class="client-logo">NEXUS</div>
+            <div class="client-logo">CORE-AI</div>
+            <div class="client-logo">STRATOS</div>
+            <div class="client-logo">VERTEX</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" id="cta">
+        <div class="container">
+        <div class="cta-box">
+            <h2>Ready to Automate your <span class="gradient-text">Enterprise?</span></h2>
+            <p>Join the next generation of AI-driven infrastructures today. Verified 99.9% precision at scale.</p>
+            <div class="cta-actions">
+                <button class="request">Get Started Now</button>
+                <button class="view">Contact Sales</button>
+            </div>
+            </div>
+            </div>
+        </section>
+        </main>
+
+        <footer class="main-footer">
+    <div class="container footer-wrapper">
+        <div class="footer-brand">
+            <div class="logo-wrapper">
+                <div class="neural-core"></div>
+                <span class="brand-text">BUSNEX<span class="ai-dot">.AI</span></span>
+            </div>
+            <p class="brand-tagline">Building the neural backbone for global enterprises.</p>
+        </div>
+
+        <div class="footer-links-container">
+            <div class="footer-group">
+                <h4>Platform</h4>
+                <ul>
+                    <li><a href="#solutions">Solutions</a></li>
+                    <li><a href="#performance">Performance</a></li>
+                    <li><a href="#terminal">Terminal</a></li>
+                </ul>
+            </div>
+            <div class="footer-group">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">Documentation</a></li>
+                    <li><a href="#">Network</a></li>
+                    <li><a href="#">Privacy</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <div class="footer-bottom">
+        <p>&copy; 2026 BUSNEX.<span>AI</span>  &nbsp; All rights reserved.</p>
+    </div>
+    </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+            const headerContainer = document.getElementById("header-container");
+            const navToggle = document.querySelector('.nav-toggle');
+            const navLinks = document.querySelectorAll('#navigation-links a');
+            const themeCheckbox = document.querySelector('.checkbox');
+            const bodyElement = document.body;
+        });
+
+        if (navToggle) {
+            navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const isOpen = header.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', isOpen);
+        });
+        }
+
+            navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+            header.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        });
+        });
+    </script>
+</body>
+</html>

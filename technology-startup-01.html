@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Author" content="Abimbola Daniel">
+    <meta name="description" content="i am building landing pages with html, css and js">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@800&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <title>Tech Startup</title>
+</head>
+<style>
+    :root {
+        --bg-dark: #020617; 
+        --accent-blue: #3b82f6; 
+        --accent-purple: #a855f7;
+        --text-main: #f8fafc;
+        --text-muted: #94a3b8;
+        --glass: rgba(30, 41, 59, 0.7); 
+        --glass-border: rgba(255, 255, 255, 0.1);
+}
+    
+    *{
+        padding: 0;
+        margin:0;
+        box-sizing: border-box;
+    }
+    
+    body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-dark);
+            background-image: 
+            radial-gradient(circle at 20% 30%, rgba(59, 130, 246, 0.1), transparent 40%),
+            radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.1), transparent 40%),
+            url('https://images.unsplash.com/photo-1635776062127-d379bfcba9f8?auto=format&fit=crop&q=80&w=1600');
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            overflow-x: hidden;
+
+    }
+
+    header{
+        background-color: rgba(15, 23, 42, 0.95);
+        box-shadow: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(12px);
+        display: flex;
+        justify-content: space-evenly;
+        padding: 15px;
+        align-items: center;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 900;
+    }
+
+    header nav ul li {
+        list-style-type: none;
+    }
+
+    header nav ul{
+        display: flex;
+        gap: 3em;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .navigation_bar .link-list .link-item{
+        text-decoration: none;
+        color: var(--text-main);
+    }
+
+    .brand{
+        text-decoration: none;
+        font-size: 1.7rem;
+        font-weight: 600;
+    }
+
+    .started{
+        text-decoration: none;
+        padding: 10px;
+        border-radius: 18px;
+        color: white;
+        background-color: var(--button);
+    }
+    
+    .brand .started .link-item {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    .Hero_Section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh; 
+        padding: 0 20px;
+        background: 
+        linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.8)), 
+        url('https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=1600');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    
+    .hero-header{
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-weight: 800;
+        font-size: 3.4rem;
+        letter-spacing: -0.04em; 
+        line-height: 1.1;
+        color: var(--text-main);
+        margin-bottom: 2.8rem;
+    }
+
+    .title-context{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-top: 120px;
+        padding: 40px;
+        width: 1200px;
+    }
+    .hero-header span{
+        margin-top: 20px;
+        font-size: 2.5rem;
+        display: inline;
+        color: var(--primary);
+    }
+
+    .title-context p{
+        font-family: 'Inter', sans-serif;
+        font-weight: 400; 
+        font-size: 1.2rem;
+        line-height: 1.7; 
+        letter-spacing: -0.01em;
+        color: #94a3b8;
+        max-width: 750px; 
+        margin: 0 auto;
+        opacity: 0.9;
+    }
+
+    .button-container{
+        display: flex;
+        gap: 3em;
+    }
+
+    .request {
+    background: var(--primary);
+    color: white;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 0 20px rgba(99, 102, 241, 0.3);
+    }
+
+    .request:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 30px rgba(99, 102, 241, 0.6);
+    background: #4f46e5; 
+    }   
+
+    .see {
+    background: rgba(255, 255, 255, 0.03); 
+    color: white;
+    font-weight: 600;
+    padding: 14px 32px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px); 
+    cursor: pointer;
+    transition: all 0.3s ease;
+    }
+
+    .see:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.4);
+    transform: translateY(-3px);
+    }
+
+    .request , .see{
+        font-family: 'Inter', sans-serif;
+        letter-spacing: -0.01em;
+    }
+    
+    .insights-section {
+    padding: 100px 0;
+    background-color: var(--section); 
+    color: var(--bg-dark);
+    }
+
+    .insights-header {
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 80px auto;
+    }
+
+    .display-title {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    font-size: 3.5rem;
+    letter-spacing: -0.05em;
+    line-height: 1.1;
+    margin-bottom: 24px;
+    color: var(--bg-dark);
+    }
+
+    .subtitle {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    color: #64748b;
+    line-height: 1.6;
+    }
+
+    .insights-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+
+    .insight-card {
+    padding: 40px;
+    border-left: 1px solid var(--glass-border); 
+    transition: transform 0.3s ease;
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    border-radius: 24px;
+    transition: all 0.4s ease;
+    }
+
+    .insight-card:hover{
+        transform: translateY(-10px);
+    }
+
+    .insight-card:first-child {
+        border-left: none; 
+    }
+
+    .insight-card h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 20px 0 15px 0;
+    color: var(--bg-dark);
+    }
+
+    .insight-card p {
+    line-height: 1.6;
+    font-size: 1rem;
+    }
+ 
+    .subtitle, .insight-card p{
+        color: #475569;
+    }
+
+    .icon-placeholder {
+    height: 200px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px;
+    border-radius: 16px;
+    overflow: hidden;
+    }
+
+    .icon-placeholder img{
+        max-width: 100%;
+        max-height: 100%;
+        object-fit: contain;
+    }   
+
+    .value-prop {
+    padding: 120px 0;
+    background-color: var(--bg-dark); 
+    color: var(--bg-dark);
+    }
+
+    .prop-flex {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+    }
+
+    .badge {
+    color: var(--text-main);
+    background-color: var(--primary);
+    padding: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    }
+
+    .prop-content h2 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-size: 3rem;
+    letter-spacing: -0.04em;
+    margin: 20px 0;
+    color: var(--text-main);
+    }
+
+    .prop-content p{
+        color: var(--text-main);
+    }
+
+    .benefit-list {
+    list-style: none;
+    margin-top: 40px;
+    }
+
+    .benefit-list li {
+    margin-bottom: 20px;
+    padding-left: 30px;
+    position: relative;
+    color: var(--text-muted);
+    }
+
+    .benefit-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: bold;
+    }
+
+    .prop-image img {
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+    }
+    </style>
+<body>
+    <header>
+        <a href="#" class="brand link-item">BUSNEX.AI</a>
+        <nav class="navigation_bar">
+            <ul class="link-list">
+                <li><a href="#" class="link-item">Model</a></li>
+                <li><a href="#" class="link-item">Solutions</a></li>
+                <li><a href="#" class="link-item"">API</a></li>
+                <li><a href="#" class="link-item">Pricing</a></li>
+            </ul>
+        </nav>
+        <a href="#" class="started">Get started</a>
+    </header>
+
+    <main>
+        <section>
+            <div class="Hero_Section">  
+            <div class="title-context">
+                <h1 class="hero-header">Empowering the Next Generation of Global <span class="text">Enterprises with Autonomous Intelligence.</span></h1>
+                <p> By integrating proprietary deep learning models directly into your existing enterprise architecture, BUSNEX.AI eliminates operational friction and automates complex, data-heavy decision-making with a verified 99.9% accuracy rate across global workflows.</p>
+            </div>
+
+            <div class="button-container">
+                <button class="request">
+                    Request Demo
+                </button>
+                <button class="see">
+                    See Docs
+                </button>
+            </div>
+        </div>
+        </section>
+
+    <section class="insights-section">
+        <div class="container">
+        <div class="insights-header">
+            <h2 class="display-title">Intelligence that scales beyond automation</h2>
+            <p class="subtitle">Most platforms simply execute tasks. BUSNEX.AI understands the context behind your data—and exactly how to optimize it for growth.</p>
+        </div>
+
+        <div class="insights-grid">
+            <div class="insight-card">
+                <div class="icon-placeholder">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800" 
+                    alt="Neural Network">
+                </div>
+                <h3>Neural Monitoring Agents</h3>
+                <p>Your enterprise workflows are live 24/7. BUSNEX.AI monitors every data point in real-time, identifying bottlenecks before they impact your bottom line.</p>
+            </div>
+
+            <div class="insight-card">
+                <div class="icon-placeholder">
+                    <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=800" 
+                    alt="Abstract Data Cube">
+                </div>
+                <h3>Predictive Failure Analysis</h3>
+                <p>Our models automatically cluster and rank operational anomalies, allowing you to visualize risks and mitigate infrastructure failures with surgical precision.</p>
+            </div>
+
+            <div class="insight-card">
+                <div class="icon-placeholder">
+                    <img src="https://images.unsplash.com/photo-1614850523296-d8c1af93d400?auto=format&fit=crop&q=80&w=800" 
+                    alt="Optimization Spheres">
+                </div>
+                <h3>Architectural Optimization</h3>
+                <p>Test new business logic and model configurations in a sandboxed neural environment to ensure every change maximizes ROI and processing speed.</p>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="value-prop">
+    <div class="container prop-flex">
+        <div class="prop-content">
+            <span class="badge">Efficiency First</span>
+            <h2>Intelligence Without Infrastructure</h2>
+            <p>Most AI solutions require months of expensive setup. BUSNEX.AI is a plug-and-play neural layer that sits on top of your existing cloud stack.</p>
+            
+            <ul class="benefit-list">
+                <li><strong>Data Sovereignty:</strong> You maintain complete control over your training sets.</li>
+                <li><strong>Zero Friction:</strong> Integrate proprietary models directly into your current architecture.</li>
+                <li><strong>Verified Accuracy:</strong> Automate complex decision-making with a 99.9% success rate.</li>
+            </ul>
+        </div>
+        <div class="prop-image">
+            <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?auto=format&fit=crop&q=80&w=800" alt="Neural Architecture">
+        </div>
+    </div>
+    </section>
+    </main>
+</body>
+</html>
