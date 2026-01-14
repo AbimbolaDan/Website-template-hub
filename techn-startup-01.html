@@ -57,74 +57,52 @@
             letter-spacing: -0.04em; 
         }
 
-        .header-container{
+        .header-container {
             display: flex;
-            justify-content: space-evenly;
+            justify-content: space-between;
             align-items: center;
-            padding: 15px;
+            padding: 20px 5%;
+            max-width: var(--container-width);
+            margin: 0 auto;
             position: sticky;
             top: 0;
-            left:0;
             z-index: 9000;
-        }
-
-        .brand{
-            text-decoration: none;
-            color:var(--text-head);
-            font-size: 1.5rem;
-            font-weight: 600;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-        }
-        .navigation_bar .link-list{
-            display: flex;
-            align-items: center;
-            list-style-type: none;
-            gap: 40px;
-
-        }
-
-        .link-list a{
-            text-decoration: none;
-            color: var(--text-body);
-        }
-
-        .link-list a:hover{
-            color: var(--text-head);
-        }
-
-        .nav-toggle{
-            display: none;
             background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 50px;
-            height: 43px;
-            align-items: center;
-            justify-content: center;
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--glass-border);
+            border-radius: 50px;
         }
-        .nav-toggle .hamburger{
-            display: block;
-            width: 24px;
-            height: 2px;
-            background: var(--primary);
-            position: relative;
-        }
-        .nav-toggle .hamburger::before,
-        .nav-toggle .hamburger::after{
-            content: '';
-            position: absolute;
-            left: 0;
-            width: 24px;
-            height: 2px;
-            background: var(--primary-color);
-            transition: transform 220ms ease, opacity 220ms ease;
-        }
-        .nav-toggle .hamburger::before{ top: -7px; }
-        .nav-toggle .hamburger::after{ top: 7px; }
 
-        #nav_section.open .nav-toggle .hamburger{ background: transparent; }
-        #nav_section.open .nav-toggle .hamburger::before{ transform: rotate(45deg)      translate(4px, 4px); }
-        #nav_section.open .nav-toggle .hamburger::after{ transform: rotate(-45deg)      translate(4px, -4px); }
+        .brand-link {
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .brand-link:hover {
+            transform: scale(1.02);
+        }
+
+        .navigation_bar .link-list {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .navigation_bar a {
+            text-decoration: none;
+            color: var(--text-head);
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .navigation_bar a:hover {
+            color: var(--primary);
+        }
+
+        .nav-toggle, .nav-overlay {
+            display: none;
+        } 
+
         .started{
             background-color: transparent;
             text-decoration: none;
@@ -710,6 +688,109 @@
                 body{
                     overflow-x: hidden;
                 }
+
+                .navigation_bar, 
+                .header-container .started {
+                    display: none;
+                }
+
+                .nav-toggle {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    background: none;
+                    border: none;
+                    cursor: pointer;
+                }
+
+                .nav-toggle span {
+                    width: 25px;
+                    height: 2px;
+                    background: var(--text-head);
+                    transition: 0.3s;
+                }
+
+                .nav-overlay {
+                    display: block;
+                    position: fixed;
+                    top: 0;
+                    right: -100%; 
+                    width: 100%;
+                    height: 100vh;
+                    background: rgba(2, 4, 8, 0.95);
+                    backdrop-filter: blur(15px);
+                    z-index: 10000;
+                    transition: right 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+                }
+
+                .nav-overlay.active {
+                right: 0;
+                }
+
+                .sidebar-content {
+                width: 60%;
+                height: 100%;
+                background: var(--bg-surface);
+                float: right;
+                padding: 40px;
+                border-left: 1px solid var(--glass-border);
+                display: flex;
+                flex-direction: column;
+                }
+
+                .sidebar-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding-bottom: 30px;
+                border-bottom: 1px solid var(--glass-border);
+                }
+
+                .close-btn {
+                background: none;
+                border: none;
+                color: var(--text-head);
+                font-size: 2.5rem;
+                cursor: pointer;
+                line-height: 1;
+                }
+
+                .sidebar-links {
+                    list-style: none;
+                    margin-top: 50px;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 25px;
+                }
+
+                .sidebar-links a {
+                    text-decoration: none;
+                    color: var(--text-head);
+                    font-size: 1.4rem;
+                    font-weight: 600;
+                }
+
+                .sidebar-links a:hover{
+                    color:var(--primary)
+                }
+
+                .sidebar-links .started {
+                    display: block;
+                    text-align: center;
+                    margin-top: 20px;
+                    width: 100%;
+                    background-color: var(--glass-card);
+                    text-decoration: none;
+                    padding: 8px 8px ;
+                    border-radius: 28px;
+                    color: var(--text-head);
+                }
+
+                .started:hover{
+                    background-color: transparent;
+                    transform: translateY(-2px);
+                    color: var(--text-head);
+                }
                 .hero-section{
                     display: flex;
                     flex-wrap: wrap;
@@ -805,30 +886,48 @@
     </style>
 </head>
 <body>
-    <header id="header">
-    <div class="header-container">
-        <a href="#" class="brand">BUSNEX.AI</a>
-        <nav class="navigation_bar">
-            <ul class="link-list">
-                <li><a href="#solutions" class="link-item">Solutions</a></li>
-                <li><a href="#performance" class="link-item">Performance</a></li>
-                <li><a href="#terminal" class="link-item">Terminal</a></li>
-                <li><a href="#network" class="link-item">Network</a></li>
-            </ul>
-        </nav>
-        <a href="#cta" class="started">Get Started</a>
-        <div class="toggle-switch">
-                <label class="switch-label">
-                <input type="checkbox" class="checkbox">
-                <span class="slider"></span>
-                </label>
-        </div> 
-            <button class="nav-toggle" aria-controls="primary-navigation" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="hamburger"></span>
-                <span class="sr-only"></span>
-            </button>
+    <header class="header-container">
+    <a href="#hero" class="brand-link">
+        <div class="logo-wrapper">
+            <div class="neural-core"></div>
+            <span class="brand-text">BUSNEX<span class="ai-dot">.AI</span></span>
+        </div>
+    </a>
+
+    <nav class="navigation_bar">
+        <ul class="link-list">
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#performance">Performance</a></li>
+            <li><a href="#terminal">Terminal</a></li>
+        </ul>
+    </nav>
+
+    <a href="#cta" class="started">Get Started</a>
+
+    <button class="nav-toggle" id="menuOpen" aria-label="Open Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+</header>
+
+<div class="nav-overlay" id="mobileNav">
+    <div class="sidebar-content">
+        <div class="sidebar-header">
+            <div class="logo-wrapper">
+                <div class="neural-core"></div>
+                <span class="brand-text">BUSNEX<span class="ai-dot">.AI</span></span>
+            </div>
+            <button class="close-btn" id="menuClose">&times;</button>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="#solutions">Solutions</a></li>
+            <li><a href="#performance">Performance</a></li>
+            <li><a href="#terminal">Terminal</a></li>
+            <li><a href="#cta" class="started">Get Started</a></li>
+        </ul>
     </div>
-    </header>
+    </div>
 
     <main>
         <section class="hero-section" id="hero">
@@ -1019,27 +1118,39 @@
 
         <script>
             document.addEventListener('DOMContentLoaded', () => {
-            const headerContainer = document.getElementById("header-container");
-            const navToggle = document.querySelector('.nav-toggle');
-            const navLinks = document.querySelectorAll('#navigation-links a');
-            const themeCheckbox = document.querySelector('.checkbox');
-            const bodyElement = document.body;
-        });
+    const menuOpen = document.getElementById('menuOpen');
+    const menuClose = document.getElementById('menuClose');
+    const mobileNav = document.getElementById('mobileNav'); 
+    const sidebarLinks = document.querySelectorAll('.sidebar-links a');
 
-        if (navToggle) {
-            navToggle.addEventListener('click', (e) => {
-            e.preventDefault();
-            const isOpen = header.classList.toggle('open');
-            navToggle.setAttribute('aria-expanded', isOpen);
-        });
-        }
+    const closeSidebar = () => {
+        mobileNav.classList.remove('active');
+        document.body.style.overflow = 'auto'; 
+    };
 
-            navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-            header.classList.remove('open');
-            navToggle.setAttribute('aria-expanded', 'false');
+    if (menuOpen) {
+        menuOpen.addEventListener('click', () => {
+            mobileNav.classList.add('active');
+            document.body.style.overflow = 'hidden'; 
         });
+    }
+
+    if (menuClose) {
+        menuClose.addEventListener('click', closeSidebar);
+    }
+
+    sidebarLinks.forEach(link => {
+        link.addEventListener('click', closeSidebar);
+    });
+
+    if (mobileNav) {
+        mobileNav.addEventListener('click', (e) => {
+            if (e.target === mobileNav) {
+                closeSidebar();
+            }
         });
-    </script>
+    }
+});
+        </script>
 </body>
 </html>
